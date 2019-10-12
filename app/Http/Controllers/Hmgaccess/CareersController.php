@@ -52,10 +52,38 @@ class CareersController extends Controller
     }
     public function editCareer($career){
     	$career = Career::find($career);
-    	return view('pages.admin.careers.editCareer', compact('career'));
+    	return view('pages.admin.careers.editcareer', compact('career'));
     }
     public function updateCareer(Career $career){
+    	$updateFields = request()->validate([
+    		'title' => 'required|string',
+    		'description' => 'required|string',
+    		'qualification'=> 'required|string',
+    		'employment_type' => 'required|string',
+    		'experience' => 'string',
+    		'offer_id' => 'required|string',
+    		'affiliate' => 'string',
+    		'expires' => 'string',
+    	]);
+    	if(request()->hasFile('featuredimage')){
+    		array_merge($updateFields, ['featuredimage'=>'image|mimes:jpeg,jpg,png,gif,svg|max:1999']);
+    		if(!empty(request('featuredimage'))){
+	    		$fileNameWithExt = request()->file('featuredimage')->getClientOriginalExtension();
+	  			$fileUploadPath = 'uploads/careers/';
+	  			$fileNameToStore = uniqid().uniqid().".".$fileNameWithExt;
+	  			$formatedImageFile = str_replace(" ", "-", $fileNameToStore);
 
+	  			//full image
+	  			$fullImage = Image::make(request('featuredimage')->getRealPath());
+	  			$fullImage->resize(770, 390);
+	  			$fullImage->save($fileUploadPath.$formatedImageFile);
+    		}
+    		$career->featuredimage = $fileNameToStore;
+    		$career->save();
+    	}
+    	$getCareerId = Career::find($career);
+    	$career->update($updateFields);
+    	return redirect()->route('careers')->with('message', 'Career Updated Successfully');
     }
     public function deleteCareer($career){
     	$career = Career::find($career);
