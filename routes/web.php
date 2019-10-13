@@ -1,6 +1,7 @@
 <?php
 
-
+Route::get('/contact/create', 'Front\ContactMailsController@create')->name('createContact');
+Route::post('/contact', 'Front\ContactMailsController@sendMessage')->name('contact');
 Route::get('/', function(){
 	return redirect('/student/dashboard');
 })->name('home')->middleware(['auth', 'completeprofile']);
