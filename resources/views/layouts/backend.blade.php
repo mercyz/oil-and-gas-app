@@ -360,12 +360,12 @@
                             </a>
                             <ul class="nav-main-submenu">
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('examples/plugin-init') ? ' active' : '' }}" href="/examples/plugin-init">
+                                    <a class="nav-main-link{{ request()->is('pages.admin.staffs.index') ? ' active' : '' }}" href="{{route('staffs')}}">
                                         <span class="nav-main-link-name">All Staffs</span>
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('examples/plugin-helper') ? ' active' : '' }}" href="/examples/plugin-helper">
+                                    <a class="nav-main-link{{ request()->is('pages.admin.staffs.addStaff') ? ' active' : '' }}" href="{{route('createStaff')}}">
                                         <span class="nav-main-link-name">Add Staff</span>
                                     </a>
                                 </li>
@@ -484,7 +484,7 @@
                                             <i class="si si-envelope-open ml-1"></i>
                                         </span>
                                     </a>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{route('adminprofile')}}">
                                         <span>Profile</span>
                                         <span>
                                             <span class="badge badge-pill badge-success">1</span>

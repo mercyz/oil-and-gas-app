@@ -11,6 +11,7 @@ use App\Models\Course;
 use App\Models\Project;
 use App\Models\SelectedCourse;
 use App\User;
+use Auth;
 
 
 
@@ -27,6 +28,10 @@ class AdminsController extends Controller
 		$courses = Course::orderBy('title', 'ASC')->get();
 		$projects = Project::orderBy('name', 'ASC')->get();
 		return view('pages.admin.dashboard', compact('students', 'courses', 'projects'));	
+	}
+	public function profile(){
+		$admin = auth()->user();
+		return view('pages.admin.profile', compact('admin'));
 	}
 
 }

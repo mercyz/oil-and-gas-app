@@ -1,7 +1,11 @@
 <?php
 
+//Contact Us 
 Route::get('/contact/create', 'Front\ContactMailsController@create')->name('createContact');
 Route::post('/contact', 'Front\ContactMailsController@sendMessage')->name('contact');
+
+
+
 Route::get('/', function(){
 	return redirect('/student/dashboard');
 })->name('home')->middleware(['auth', 'completeprofile']);
@@ -29,10 +33,11 @@ Route::group(['prefix' => 'staffroom'], function(){
 	Route::post('/login', 'Auth\StaffsController@doStaffLogin')->name('doStaffLogin');
 });
 
-//admin 
+//Administrator 
 Route::group(['prefix' => 'hmgaccess'], function(){
 
 Route::get('/dashboard', 'Hmgaccess\AdminsController@index')->name('dashboard');
+Route::get('/profile', 'Hmgaccess\AdminsController@profile')->name('adminprofile');
 
 //Messages
 Route::get('/message/inbox', 'Hmgaccess\AdminSendMessagesController@index')->name('adminEmail');
@@ -101,6 +106,15 @@ Route::post('/careers', 'Hmgaccess\CareersController@storeCareer')->name('storec
 Route::get('/careers/{career}/edit', 'Hmgaccess\CareersController@editCareer')->name('editcareer');
 Route::patch('/careers/{career}', 'Hmgaccess\CareersController@updateCareer')->name('updatecareer');
 Route::delete('/careers/{career}', 'Hmgaccess\CareersController@deleteCareer')->name('deletecareer');
+
+//Staffs
+Route::get('/staffs', 'Hmgaccess\StaffsController@index')->name('staffs');
+Route::get('/create-staff', 'Hmgaccess\StaffsController@createStaffForm')->name('createStaff');
+Route::post('/add-staff', 'Hmgaccess\StaffsController@addStaff')->name('addStaff');
+Route::get('/edit-staff/{staff}/edit', 'Hmgaccess\StaffsController@editStaff')->name('editStaff');
+Route::post('/update-staff/{staff}', 'Hmgaccess\StaffsController@updateStaff')->name('staffUpdate');
+Route::get('/staff-details/{staff}', 'Hmgaccess\StaffsController@StaffDetails')->name('staffDetails');
+Route::delete('/staff-delete/{staff}', 'Hmgaccess\StaffsController@deleteStaff')->name('deleteStaff');
 
 });
 
