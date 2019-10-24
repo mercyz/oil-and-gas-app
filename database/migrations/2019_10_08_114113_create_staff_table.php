@@ -23,6 +23,7 @@ class CreateStaffTable extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();
+            $table->string('gender')->nullable();
             $table->boolean('active')->default(0);
             $table->string('token')->nullable();
             $table->string('password');

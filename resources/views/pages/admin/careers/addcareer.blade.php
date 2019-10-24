@@ -60,10 +60,7 @@
 			<label for="experience">Experience</label>
 			<input type="text" class="form-control {{$errors->has('title')? 'is-invalid': ''}}" name="experience" placeholder="Experience">
 		</div>
-		<div class="form-group">
-			<label for="offer_id">Offer ID</label>
-			<input type="text" name="offer_id" class="form-control {{$errors->has('title')? 'is-invalid': ''}}" placeholder="Offer ID">
-		</div>
+		
 		<div class="form-group">
 			<label for="affiliate">Affiliate (if Known)</label>
 			<input type="text" name="affiliate" class="form-control {{$errors->has('title')? 'is-invalid': ''}}" placeholder="Affiliate">

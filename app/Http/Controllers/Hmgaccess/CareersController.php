@@ -34,7 +34,7 @@ class CareersController extends Controller
     	}
     	$add = request()->validate($this->careerFields());
     	$slug = str_slug(request()->title).uniqid().uniqid();
-    	$career->addCareer(array_merge($add, ['featuredimage'=>$fileNameToStore, 'slug'=>$slug]));
+    	$career->addCareer(array_merge($add, ['featuredimage'=>$fileNameToStore, 'slug'=>$slug, 'offer_id' => str_random(6)]));
     	return redirect()->route('careers')->with('message', 'Career uploaded Successfully');
     }
     public function careerFields(){
@@ -44,7 +44,7 @@ class CareersController extends Controller
     		'qualification'=> 'required|string',
     		'employment_type' => 'required|string',
     		'experience' => 'string',
-    		'offer_id' => 'required|string',
+    		// 'offer_id' => 'required|string',
     		'affiliate' => 'string',
     		'expires' => 'string',
     		'featuredimage' => 'required|image|mimes:jpeg,jpg,png,gif,svg|max:1999'

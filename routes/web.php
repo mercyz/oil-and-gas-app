@@ -26,9 +26,12 @@ Route::post('/course-detail/{course}/pay', 'StudentPortal\CoursesController@make
 });
 
 
-//Staffs
+//StaffsRoom
 Route::group(['prefix' => 'staffroom'], function(){
 	Route::get('/dashboard', 'Staffs\StaffsController@index')->name('staffsdashboard');
+	Route::get('/staff-profile/{staff}', 'Staffs\StaffsController@viewProfile')->name('viewprofile');
+	Route::get('/editprofile/{staff}', 'Staffs\StaffsController@updateForm')->name('editStaffProfile');
+	Route::post('/updateprofile/{staff}', 'Staffs\StaffsController@updateStaffRecord')->name('updateStaffRecord');
 	Route::get('/login', 'Auth\StaffsController@staffLoginForm')->name('staffsLoginForm');
 	Route::post('/login', 'Auth\StaffsController@doStaffLogin')->name('doStaffLogin');
 });

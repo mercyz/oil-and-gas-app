@@ -22,6 +22,6 @@ class Staff extends Authenticatable
    		return $staff;
    	}
     public function getStaffProfile(){
-      return $this->hasOne('App\Models\StaffProfile');
+      return $this->hasOne('App\Models\StaffProfile', 'staff_id', 'id');
     }
 }

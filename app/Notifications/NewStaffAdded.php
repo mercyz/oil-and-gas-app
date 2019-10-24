@@ -48,7 +48,7 @@ class NewStaffAdded extends Notification
                     ->line('Email: '. $newStaff->email)
                     ->line('Password: '. $newStaff->password)
                     ->line('Please do login with the following details above and reset your password. after Clicking the Verify Account button below')
-                    ->action('Verify Account', url('/verfy'.$newStaff->token))
+                    ->action('Verify Account', url('/verfy/'.$newStaff->token))
                     ->line('Welcome on borad once again! having an Issue? Please Feel Free to contact support@hallmarkgroupng.com');
     }
 
