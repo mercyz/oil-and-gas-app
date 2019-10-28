@@ -1,12 +1,29 @@
 <?php
 
+Route::get('/', 'Front\HomeController@index')->name('front');
+Route::get('/about', 'Front\HomeController@about')->name('about');
+
+//Courses
+Route::get('/courses', 'Front\CoursesController@index')->name('frontCourses');
+Route::get('/courses/{course}', 'Front\CoursesController@singleCourse')->name('showCourse');
+
+//Services
+Route::get('/services', 'Front\ServicesController@index')->name('frontServices');
+Route::get('/services/{services}', 'Front\ServicesController@singleService')->name('showService');
+
+//Products
+Route::get('/products', 'Front\ProductsController@index')->name('frontProducts');
+Route::get('/products/{products}', 'Front\ProductsController@singleProduct')->name('showProduct');
+
+//Projects
+Route::get('/projects', 'Front\ProjectsController@index')->name('frontProjects');
+Route::get('/projects/{projects}', 'Front\ProjectsController@singleProject')->name('showProject');
 //Contact Us 
 Route::get('/contact/create', 'Front\ContactMailsController@create')->name('createContact');
 Route::post('/contact', 'Front\ContactMailsController@sendMessage')->name('contact');
 
 
-
-Route::get('/', function(){
+Route::get('/student', function(){
 	return redirect('/student/dashboard');
 })->name('home')->middleware(['auth', 'completeprofile']);
 

@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     <div class="content content-full font-size-sm text-muted text-center">
-                        <strong>Surevisco Limited</strong> &copy; <span data-toggle="year-copy"></span>
+                        <strong>Hallmark Group</strong> &copy; <span data-toggle="year-copy"></span>
                     </div>
                 </div>
                 <!-- END Page Content -->
